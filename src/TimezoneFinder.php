@@ -4,11 +4,17 @@ namespace FahriGunadi\TimezoneFinder;
 
 class TimezoneFinder
 {
-    public function timezoneName($latitude, $longitude): string
+    public function timezoneName(float $latitude, float $longitude): ?string
     {
         $bin = $this->binPath();
 
-        return trim(shell_exec("$bin $latitude $longitude"), " \n\r\t\v\x00\"");
+        $timezone = trim(shell_exec("$bin $latitude $longitude"), " \n\r\t\v\x00\"");
+
+        if (! $timezone) {
+            return null;
+        }
+
+        return $timezone;
     }
 
     protected function binPath(): string
