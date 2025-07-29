@@ -16,6 +16,5 @@ it('valid timezone', function () {
 });
 
 it('null timezone', function () {
-    echo TimezoneFinder::timezoneName(432432432432, 473284638);
     expect( TimezoneFinder::timezoneName(432432432432, 473284638))->toBeNull();
 });
