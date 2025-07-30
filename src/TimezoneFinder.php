@@ -27,12 +27,6 @@ class TimezoneFinder
 
         $binFileName = $binaries[PHP_OS_FAMILY] ?? 'tzf-cli-linux';
 
-        $fullBinPath = __DIR__ . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . $binFileName;
-
-        if (file_exists($fullBinPath) && !is_executable($fullBinPath)) {
-            chmod($fullBinPath, 0755);
-        }
-
-        return $fullBinPath;
+        return __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . $binFileName;
     }
 }

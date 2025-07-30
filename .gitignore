@@ -1,6 +1,9 @@
 # Composer Related
 composer.lock
 /vendor
+/bin/tzf-cli-windows.exe
+/bin/tzf-cli-darwin
+/bin/tzf-cli-linux
 
 # Frontend Assets
 /node_modules
