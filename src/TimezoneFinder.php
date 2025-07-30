@@ -19,16 +19,20 @@ class TimezoneFinder
 
     protected function binPath(): string
     {
-        $os = PHP_OS_FAMILY;
-
         $binaries = [
             'Windows' => 'tzf-cli-windows.exe',
             'Darwin' => 'tzf-cli-darwin',
             'Linux' => 'tzf-cli-linux',
         ];
 
-        $bin = $binaries[$os] ?? 'tzf-cli-linux';
+        $binFileName = $binaries[PHP_OS_FAMILY] ?? 'tzf-cli-linux';
 
-        return sprintf('%s%sbin%s%s', __DIR__, DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR, $bin);
+        $fullBinPath = __DIR__ . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . $binFileName;
+
+        if (file_exists($fullBinPath) && !is_executable($fullBinPath)) {
+            chmod($fullBinPath, 0755);
+        }
+
+        return $fullBinPath;
     }
 }
