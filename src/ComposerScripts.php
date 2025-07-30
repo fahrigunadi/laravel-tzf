@@ -17,8 +17,7 @@ class ComposerScripts
 
         $binFileName = $binaries[PHP_OS_FAMILY] ?? 'tzf-cli-linux';
 
-        // --- PATH AND URL CONFIGURATION ---
-        $fileUrl = "https://storage.pkg.fahrigunadi.dev/laravel-tzf/bin/{$binFileName}";
+        $fileUrl = "https://github.com/fahrigunadi/tzf-bin/releases/download/v0.0.4/{$binFileName}";
 
         $binPath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . $binFileName;
 
