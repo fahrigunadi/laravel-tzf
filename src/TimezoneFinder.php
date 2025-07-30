@@ -21,7 +21,13 @@ class TimezoneFinder
     {
         $os = PHP_OS_FAMILY;
 
-        $bin = $os === 'Windows' ? 'tzf-cli-windows.exe' : 'tzf-cli-linux';
+        $binaries = [
+            'Windows' => 'tzf-cli-windows.exe',
+            'Darwin' => 'tzf-cli-darwin',
+            'Linux' => 'tzf-cli-linux',
+        ];
+
+        $bin = $binaries[$os] ?? 'tzf-cli-linux';
 
         return sprintf('%s%sbin%s%s', __DIR__, DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR, $bin);
     }
